@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kitchen - Menus</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* Bannière d'en-tête */
+        .banner {
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* En-tête texte */
+        header {
+            text-align: center;
+            margin: 25px 20px 15px 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        p.subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Grille des restaurants */
+        .restaurants-grid {
+            width: 100%;
+            max-width: 500px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: #fff;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px 15px 12px 15px;
+            color: #fff;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background-color: #ffffff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bannière Principale -->
+    <div class="banner">
+        <img src="banniere_kitchen.png" alt="The Kitchen Food Court">
+    </div>
+
+    <!-- Titre -->
+    <header>
+        <h1>DÉCOUVREZ NOS RESTAURANTS</h1>
+        <p class="subtitle">Sélectionnez un établissement pour ouvrir son menu</p>
+    </header>
+
+    <!-- Cartes des Restaurants -->
+    <main class="restaurants-grid">
+
+        <!-- Bey -->
+        <a href="bey.pdf" target="_blank" class="card">
+            <img src="bey.jpg" alt="Bey">
+            <div class="card-overlay">
+                <div class="card-title">Bey</div>
+            </div>
+        </a>
+
+        <!-- The Bun -->
+        <a href="the_bun.pdf" target="_blank" class="card">
+            <img src="the_bun.jpg" alt="The Bun">
+            <div class="card-overlay">
+                <div class="card-title">The Bun</div>
+            </div>
+        </a>
+
+        <!-- Nappa -->
+        <a href="nappa.pdf" target="_blank" class="card">
+            <img src="nappa.jpg" alt="Nappa">
+            <div class="card-overlay">
+                <div class="card-title">Nappa</div>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p><strong>The Kitchen Food Court</strong></p>
+        <p>Ouvert tous les jours</p>
+        <div class="footer-buttons">
+            <a href="https://maps.google.com" target="_blank" class="btn-footer">📍 Itinéraire</a>
+            <a href="tel:+22500000000" class="btn-footer">📞 Appeler</a>
+        </div>
+    </footer>
+
+</body>
+</html>
