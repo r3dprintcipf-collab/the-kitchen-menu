@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Kitchen - Menus</title>
+    
+    <!-- Préchargement prioritaire de la bannière pour affichage instantané -->
+    <link rel="preload" as="image" href="banniere_kitchen.png" fetchpriority="high">
+
     <style>
         * {
             box-sizing: border-box;
@@ -13,8 +17,10 @@
         }
 
         body {
-            background-color: #f4f4f9;
-            color: #333;
+            /* Fond effet papier texturé / granuleux élégant */
+            background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            color: #2b2b2b;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -29,7 +35,8 @@
             overflow: hidden;
             border-bottom-left-radius: 16px;
             border-bottom-right-radius: 16px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            background-color: #121212; /* Fond sombre pendant le mini temps de charge */
         }
 
         .banner img {
@@ -49,6 +56,7 @@
             color: #1a1a1a;
             margin-bottom: 6px;
             font-weight: 700;
+            letter-spacing: 1px;
         }
 
         p.subtitle {
@@ -73,9 +81,10 @@
             text-decoration: none;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .card:active {
@@ -94,7 +103,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             padding: 20px 15px 12px 15px;
             color: #fff;
         }
@@ -120,31 +129,35 @@
         .footer-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
             margin-top: 15px;
         }
 
         .btn-footer {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 10px 18px;
+            gap: 8px;
+            padding: 12px 24px;
             background-color: #ffffff;
-            color: #333;
+            color: #2b2b2b;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.85rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
             font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0ddd5;
+            transition: transform 0.2s;
+        }
+
+        .btn-footer:active {
+            transform: scale(0.96);
         }
     </style>
 </head>
 <body>
 
-    <!-- Bannière Principale -->
+    <!-- Bannière Principale avec optimisation de chargement ultra-rapide -->
     <div class="banner">
-        <img src="banniere_kitchen.png" alt="The Kitchen Food Court">
+        <img src="banniere_kitchen.png" alt="The Kitchen Food Court" fetchpriority="high" loading="eager" decoding="sync">
     </div>
 
     <!-- Titre -->
@@ -187,8 +200,7 @@
         <p><strong>The Kitchen Food Court</strong></p>
         <p>Ouvert tous les jours</p>
         <div class="footer-buttons">
-            <a href="https://maps.google.com" target="_blank" class="btn-footer">📍 Itinéraire</a>
-            <a href="tel:+22500000000" class="btn-footer">📞 Appeler</a>
+            <a href="https://www.google.com/maps/place/Padelta+-+Padel+Couvert+%C3%A0+Abidjan/@5.3406612,-4.0101726,1122m/data=!3m1!1e3!4m15!1m8!3m7!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!2sPadelta+-+Padel+Couvert+%C3%A0+Abidjan!8m2!3d5.3406438!4d-4.009847!10e5!16s%2Fg%2F11vzgmdzdd!3m5!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!8m2!3d5.3406438!4d-4.009847!16s%2Fg%2F11vzgmdzdd?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-footer">📍 Itinéraire</a>
         </div>
     </footer>
 
