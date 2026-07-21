@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Kitchen - Menus</title>
     
-    <!-- Préchargement prioritaire de la bannière pour affichage instantané -->
+    <!-- Police premium & préchargement prioritaire de la bannière -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="banniere_kitchen.png" fetchpriority="high">
 
     <style>
@@ -13,19 +16,20 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            /* Fond effet papier texturé / granuleux élégant */
-            background-color: #f2efe9;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            color: #2b2b2b;
+            /* Fond effet papier artisanal granuleux */
+            background-color: #f5f2eb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+            color: #1a1a1a;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         /* Bannière d'en-tête */
@@ -33,10 +37,10 @@
             width: 100%;
             max-width: 600px;
             overflow: hidden;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-            background-color: #121212; /* Fond sombre pendant le mini temps de charge */
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background-color: #121212;
         }
 
         .banner img {
@@ -48,20 +52,23 @@
         /* En-tête texte */
         header {
             text-align: center;
-            margin: 25px 20px 15px 20px;
+            margin: 30px 20px 20px 20px;
         }
 
         h1 {
-            font-size: 1.8rem;
-            color: #1a1a1a;
-            margin-bottom: 6px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 1.7rem;
+            color: #111111;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         p.subtitle {
-            color: #666;
+            color: #666666;
             font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.2px;
         }
 
         /* Grille des restaurants */
@@ -71,7 +78,7 @@
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 22px;
             margin-top: 10px;
         }
 
@@ -79,23 +86,53 @@
             position: relative;
             display: block;
             text-decoration: none;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background-color: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            position: relative;
         }
 
         .card img {
             width: 100%;
-            height: 180px;
+            height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.4s ease;
+        }
+
+        /* Badge "Voir le menu" */
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .card-overlay {
@@ -103,75 +140,87 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            padding: 20px 15px 12px 15px;
-            color: #fff;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+            padding: 25px 18px 15px 18px;
+            color: #ffffff;
         }
 
         .card-title {
-            font-size: 1.4rem;
-            font-weight: bold;
+            font-size: 1.45rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         /* Footer */
         footer {
-            margin-top: 40px;
+            margin-top: 45px;
             text-align: center;
-            padding: 20px;
-            color: #555;
+            padding: 0 20px;
+            color: #666666;
             font-size: 0.9rem;
             width: 100%;
             max-width: 500px;
         }
 
+        footer p.brand {
+            font-weight: 700;
+            color: #222222;
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
         .footer-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 18px;
         }
 
         .btn-footer {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 13px 26px;
             background-color: #ffffff;
-            color: #2b2b2b;
+            color: #1a1a1a;
             text-decoration: none;
             border-radius: 30px;
             font-size: 0.9rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid #e0ddd5;
-            transition: transform 0.2s;
+            font-weight: 700;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e2ded4;
+            transition: all 0.2s ease;
         }
 
         .btn-footer:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
+            background-color: #f9f8f5;
         }
     </style>
 </head>
 <body>
 
-    <!-- Bannière Principale avec optimisation de chargement ultra-rapide -->
+    <!-- Bannière Principale -->
     <div class="banner">
         <img src="banniere_kitchen.png" alt="The Kitchen Food Court" fetchpriority="high" loading="eager" decoding="sync">
     </div>
 
-    <!-- Titre -->
+    <!-- En-tête -->
     <header>
         <h1>DÉCOUVREZ NOS RESTAURANTS</h1>
-        <p class="subtitle">Sélectionnez un établissement pour ouvrir son menu</p>
+        <p class="subtitle">Sélectionnez un établissement pour voir le menu</p>
     </header>
 
-    <!-- Cartes des Restaurants -->
+    <!-- Liste des Restaurants -->
     <main class="restaurants-grid">
 
         <!-- Bey -->
         <a href="bey.pdf" target="_blank" class="card">
-            <img src="bey.jpg" alt="Bey">
+            <div class="card-image-wrapper">
+                <img src="bey.jpg" alt="Bey">
+                <span class="card-badge">📖 Menu</span>
+            </div>
             <div class="card-overlay">
                 <div class="card-title">Bey</div>
             </div>
@@ -179,7 +228,10 @@
 
         <!-- The Bun -->
         <a href="the_bun.pdf" target="_blank" class="card">
-            <img src="the_bun.jpg" alt="The Bun">
+            <div class="card-image-wrapper">
+                <img src="the_bun.jpg" alt="The Bun">
+                <span class="card-badge">📖 Menu</span>
+            </div>
             <div class="card-overlay">
                 <div class="card-title">The Bun</div>
             </div>
@@ -187,7 +239,10 @@
 
         <!-- Nappa -->
         <a href="nappa.pdf" target="_blank" class="card">
-            <img src="nappa.jpg" alt="Nappa">
+            <div class="card-image-wrapper">
+                <img src="nappa.jpg" alt="Nappa">
+                <span class="card-badge">📖 Menu</span>
+            </div>
             <div class="card-overlay">
                 <div class="card-title">Nappa</div>
             </div>
@@ -197,7 +252,7 @@
 
     <!-- Pied de page -->
     <footer>
-        <p><strong>The Kitchen Food Court</strong></p>
+        <p class="brand">The Kitchen Food Court</p>
         <p>Ouvert tous les jours</p>
         <div class="footer-buttons">
             <a href="https://www.google.com/maps/place/Padelta+-+Padel+Couvert+%C3%A0+Abidjan/@5.3406612,-4.0101726,1122m/data=!3m1!1e3!4m15!1m8!3m7!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!2sPadelta+-+Padel+Couvert+%C3%A0+Abidjan!8m2!3d5.3406438!4d-4.009847!10e5!16s%2Fg%2F11vzgmdzdd!3m5!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!8m2!3d5.3406438!4d-4.009847!16s%2Fg%2F11vzgmdzdd?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-footer">📍 Itinéraire</a>
