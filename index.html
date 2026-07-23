@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Kitchen - Menus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>The Kitchen - Menus & Carte</title>
     
-    <!-- Police premium & préchargement prioritaire de la bannière -->
+    <!-- Polices Google & Préchargement prioritaire -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="banniere_kitchen.png" fetchpriority="high">
 
     <style>
@@ -16,31 +16,31 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            /* Fond effet papier artisanal granuleux */
-            background-color: #f5f2eb;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
-            color: #1a1a1a;
+            /* Fond effet papier artisanal texturé */
+            background-color: #f6f3ed;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            color: #121212;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding-bottom: 50px;
+            padding-bottom: 40px;
         }
 
         /* Bannière d'en-tête */
         .banner {
             width: 100%;
-            max-width: 600px;
+            max-width: 550px;
             overflow: hidden;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            background-color: #121212;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            background-color: #0f0f0f;
         }
 
         .banner img {
@@ -49,59 +49,58 @@
             display: block;
         }
 
-        /* En-tête texte */
+        /* Header / Titre */
         header {
             text-align: center;
-            margin: 30px 20px 20px 20px;
+            margin: 28px 20px 22px 20px;
         }
 
         h1 {
-            font-size: 1.7rem;
-            color: #111111;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            color: #0d0d0d;
+            margin-bottom: 6px;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         p.subtitle {
             color: #666666;
-            font-size: 0.95rem;
-            font-weight: 400;
-            letter-spacing: 0.2px;
+            font-size: 0.92rem;
+            font-weight: 500;
         }
 
-        /* Grille des restaurants */
+        /* Liste des cartes restaurants */
         .restaurants-grid {
             width: 100%;
-            max-width: 500px;
-            padding: 0 20px;
+            max-width: 480px;
+            padding: 0 18px;
             display: flex;
             flex-direction: column;
-            gap: 22px;
-            margin-top: 10px;
+            gap: 20px;
         }
 
         .card {
             position: relative;
-            display: block;
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
             background-color: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
         }
 
         .card:active {
             transform: scale(0.97);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
         }
 
         .card-image-wrapper {
             width: 100%;
-            height: 190px;
+            height: 185px;
             overflow: hidden;
             position: relative;
         }
@@ -111,28 +110,24 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
         }
 
-        /* Badge "Voir le menu" */
-        .card-badge {
+        /* Tag spécialité */
+        .card-tag {
             position: absolute;
             top: 14px;
-            right: 14px;
-            background: rgba(0, 0, 0, 0.55);
+            left: 14px;
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .card-overlay {
@@ -140,40 +135,77 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
-            padding: 25px 18px 15px 18px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 70%, transparent 100%);
+            padding: 20px 18px 12px 18px;
             color: #ffffff;
         }
 
         .card-title {
-            font-size: 1.45rem;
+            font-size: 1.5rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 0.8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        /* Pied de la carte / Bouton d'action */
+        .card-footer-action {
+            padding: 12px 18px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0ede6;
+        }
+
+        .action-text {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card:active .action-arrow {
+            transform: translateX(3px);
         }
 
         /* Footer */
         footer {
-            margin-top: 45px;
+            margin-top: 40px;
             text-align: center;
             padding: 0 20px;
-            color: #666666;
-            font-size: 0.9rem;
+            color: #777777;
+            font-size: 0.88rem;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
         }
 
         footer p.brand {
-            font-weight: 700;
-            color: #222222;
-            font-size: 1rem;
-            margin-bottom: 3px;
+            font-weight: 800;
+            color: #111111;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
         }
 
         .footer-buttons {
             display: flex;
             justify-content: center;
+            gap: 12px;
             margin-top: 18px;
         }
 
@@ -181,21 +213,21 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 13px 26px;
+            padding: 12px 22px;
             background-color: #ffffff;
-            color: #1a1a1a;
+            color: #111111;
             text-decoration: none;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
-            border: 1px solid #e2ded4;
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e0d5;
+            transition: transform 0.15s ease, background-color 0.15s ease;
         }
 
         .btn-footer:active {
             transform: scale(0.95);
-            background-color: #f9f8f5;
+            background-color: #f4f1ea;
         }
     </style>
 </head>
@@ -208,8 +240,8 @@
 
     <!-- En-tête -->
     <header>
-        <h1>DÉCOUVREZ NOS RESTAURANTS</h1>
-        <p class="subtitle">Sélectionnez un établissement pour voir le menu</p>
+        <h1>NOS RESTAURANTS</h1>
+        <p class="subtitle">Sélectionnez une carte pour consulter le menu</p>
     </header>
 
     <!-- Liste des Restaurants -->
@@ -218,33 +250,45 @@
         <!-- BEYY -->
         <a href="bey.pdf" target="_blank" class="card">
             <div class="card-image-wrapper">
-                <img src="bey.jpg" alt="BEYY">
-                <span class="card-badge">📖 Menu</span>
+                <img src="bey.jpg" alt="BEYY" loading="lazy" decoding="async">
+                <span class="card-tag">Méditerranéen & Grill</span>
+                <div class="card-overlay">
+                    <div class="card-title">BEYY</div>
+                </div>
             </div>
-            <div class="card-overlay">
-                <div class="card-title">BEYY</div>
+            <div class="card-footer-action">
+                <span class="action-text">Consulter le menu</span>
+                <div class="action-arrow">➔</div>
             </div>
         </a>
 
         <!-- The Bun -->
         <a href="the_bun.pdf" target="_blank" class="card">
             <div class="card-image-wrapper">
-                <img src="the_bun.jpg" alt="The Bun">
-                <span class="card-badge">📖 Menu</span>
+                <img src="the_bun.jpg" alt="The Bun" loading="lazy" decoding="async">
+                <span class="card-tag">Burgers Gourmet</span>
+                <div class="card-overlay">
+                    <div class="card-title">The Bun</div>
+                </div>
             </div>
-            <div class="card-overlay">
-                <div class="card-title">The Bun</div>
+            <div class="card-footer-action">
+                <span class="action-text">Consulter le menu</span>
+                <div class="action-arrow">➔</div>
             </div>
         </a>
 
         <!-- Nappa -->
         <a href="nappa.pdf" target="_blank" class="card">
             <div class="card-image-wrapper">
-                <img src="nappa.jpg" alt="Nappa">
-                <span class="card-badge">📖 Menu</span>
+                <img src="nappa.jpg" alt="Nappa" loading="lazy" decoding="async">
+                <span class="card-tag">Spécialités & Bar</span>
+                <div class="card-overlay">
+                    <div class="card-title">Nappa</div>
+                </div>
             </div>
-            <div class="card-overlay">
-                <div class="card-title">Nappa</div>
+            <div class="card-footer-action">
+                <span class="action-text">Consulter le menu</span>
+                <div class="action-arrow">➔</div>
             </div>
         </a>
 
@@ -255,7 +299,9 @@
         <p class="brand">The Kitchen Food Court</p>
         <p>Ouvert tous les jours</p>
         <div class="footer-buttons">
-            <a href="https://www.google.com/maps/place/Padelta+-+Padel+Couvert+%C3%A0+Abidjan/@5.3406612,-4.0101726,1122m/data=!3m1!1e3!4m15!1m8!3m7!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!2sPadelta+-+Padel+Couvert+%C3%A0+Abidjan!8m2!3d5.3406438!4d-4.009847!10e5!16s%2Fg%2F11vzgmdzdd!3m5!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!8m2!3d5.3406438!4d-4.009847!16s%2Fg%2F11vzgmdzdd?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-footer">📍 Itinéraire</a>
+            <a href="https://www.google.com/maps/place/Padelta+-+Padel+Couvert+%C3%A0+Abidjan/@5.3406612,-4.0101726,1122m/data=!3m1!1e3!4m15!1m8!3m7!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!2sPadelta+-+Padel+Couvert+%C3%A0+Abidjan!8m2!3d5.3406438!4d-4.009847!10e5!16s%2Fg%2F11vzgmdzdd!3m5!1s0xfc1ebdbb1503869:0xbeec240f7f514e20!8m2!3d5.3406438!4d-4.009847!16s%2Fg%2F11vzgmdzdd?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-footer">
+                📍 Itinéraire
+            </a>
         </div>
     </footer>
 
